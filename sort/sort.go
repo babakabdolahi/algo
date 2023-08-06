@@ -13,3 +13,18 @@ func BubbleSort(s []int) []int {
 	}
 	return s
 }
+
+func SelectionSort(s []int) []int {
+	var lowestIndex int
+	for i := 0; i < len(s)-1; i++ {
+		for j := i + 1; j < len(s); j++ {
+			if s[j] < s[i] {
+				lowestIndex = j
+			}
+		}
+		temp := s[i]
+		s[i] = s[lowestIndex]
+		s[lowestIndex] = temp
+	}
+	return s
+}
