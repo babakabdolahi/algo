@@ -12,24 +12,24 @@ func LinearSearch(s []int, k int) bool {
 
 // binary search assumes that the input array is ordered.
 func BinarySearch(s []int, k int) bool {
+	l := len(s)
+	// return false if the input slice is empty.
+	if l == 0 {
+		return false
+	}
+
 	for {
-		l := len(s)
-
-		if l == 0 {
-			return false
-		}
-
 		l = l / 2
 
 		if k == s[l] {
 			return true
 		} else if k < s[l] {
-			s = s[:l]
+			s = s[:l+1]
 		} else {
 			s = s[l:]
 		}
 
-		if len(s) == 1 {
+		if l == 1 || l == 0 {
 			return k == s[0]
 		}
 	}

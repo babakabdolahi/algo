@@ -23,7 +23,8 @@ func TestBinarySearch(t *testing.T) {
 		{[]int{1, 4}, 0, false},
 		{[]int{1, 4}, 8, false},
 		{[]int{1}, 1, true},
-		{[]int{1}, 3, false},
+		{[]int{2}, 1, false},
+		{[]int{2}, 3, false},
 	}
 	for _, test := range tests {
 		if got := BinarySearch(test.inputSlice, test.searchFor); got != test.want {
