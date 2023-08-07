@@ -28,3 +28,18 @@ func SelectionSort(s []int) []int {
 	}
 	return s
 }
+
+func InsertionSort(s []int) []int {
+	for i := 1; i < len(s); i++ {
+		temp := s[i]
+		for j := i - 1; j >= 0; j-- {
+			if s[j] > temp {
+				s[j+1] = s[j]
+			} else {
+				s[j+1] = temp
+				break
+			}
+		}
+	}
+	return s
+}
