@@ -43,3 +43,36 @@ func InsertionSort(s []int) []int {
 	}
 	return s
 }
+
+func Partition(s []int) []int {
+	lastIndex := len(s) - 1
+	leftIndex := 0
+	rightIndex := lastIndex
+	pivot := s[lastIndex]
+
+	for {
+		for {
+			if s[leftIndex] >= pivot || leftIndex == lastIndex {
+				break
+			} else {
+				leftIndex++
+			}
+		}
+		for {
+			if s[rightIndex] <= pivot || rightIndex < 0 {
+				break
+			} else {
+				rightIndex--
+			}
+		}
+		if leftIndex >= rightIndex {
+			s[leftIndex], s[lastIndex] = pivot, s[leftIndex]
+			break
+		} else {
+			s[leftIndex], s[rightIndex] = s[rightIndex], s[leftIndex]
+			leftIndex++
+			rightIndex--
+		}
+	}
+	return s
+}
