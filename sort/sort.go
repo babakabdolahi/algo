@@ -46,8 +46,13 @@ func InsertionSort(s []int) []int {
 
 func Partition(s []int) []int {
 	lastIndex := len(s) - 1
+
+	if lastIndex == 0 {
+		return s
+	}
+
 	leftIndex := 0
-	rightIndex := lastIndex
+	rightIndex := lastIndex - 1
 	pivot := s[lastIndex]
 
 	for {
@@ -59,7 +64,7 @@ func Partition(s []int) []int {
 			}
 		}
 		for {
-			if s[rightIndex] <= pivot || rightIndex < 0 {
+			if s[rightIndex] <= pivot || rightIndex == 0 {
 				break
 			} else {
 				rightIndex--
