@@ -44,14 +44,10 @@ func InsertionSort(s []int) []int {
 	return s
 }
 
-func Partition(s []int) []int {
-	lastIndex := len(s) - 1
-
-	if lastIndex == 0 {
-		return s
+func Partition(s []int, leftIndex, lastIndex int) int {
+	if lastIndex-leftIndex <= 0 {
+		return 0
 	}
-
-	leftIndex := 0
 	rightIndex := lastIndex - 1
 	pivot := s[lastIndex]
 
@@ -79,5 +75,17 @@ func Partition(s []int) []int {
 			rightIndex--
 		}
 	}
-	return s
+	return leftIndex
+}
+
+// TODO: should add validation for input parameters.
+func QuickSort(s []int, firstIndex int, lastIndex int) {
+	if lastIndex-firstIndex <= 0 {
+		return
+	}
+	pivotIndex := Partition(s, firstIndex, lastIndex)
+
+	QuickSort(s, firstIndex, pivotIndex-1)
+
+	QuickSort(s, pivotIndex+1, lastIndex)
 }
