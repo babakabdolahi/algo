@@ -71,7 +71,7 @@ func TestPartition(t *testing.T) {
 		{[]int{2}, 0, 0, 0, []int{2}},
 		{[]int{0, 5, 2, 1, 6, 3}, 0, 5, 3, []int{0, 1, 2, 3, 6, 5}},
 		{[]int{20, 18, 10, 8}, 0, 3, 0, []int{8, 18, 10, 20}},
-		{[]int{3, 1, 1}, 0, 2, 0, []int{1, 1, 3}},
+		{[]int{3, 1, 1}, 0, 2, 1, []int{1, 1, 3}},
 	}
 	for _, test := range tests {
 		originalInputSlice := make([]int, len(test.inputSlice))
@@ -98,7 +98,7 @@ func TestQuickSort(t *testing.T) {
 		{[]int{0, 5, 2, 1, 6, 3}, 0, 5, []int{0, 1, 2, 3, 5, 6}},
 		{[]int{20, 18, 10, 8}, 0, 3, []int{8, 10, 18, 20}},
 		{[]int{20, 18, 10, 8, 2, 0}, 0, 5, []int{0, 2, 8, 10, 18, 20}},
-		{[]int{20, 18, 8, 10, 8, 2, 0}, 0, 5, []int{0, 2, 8, 8, 10, 18, 20}},
+		{[]int{20, 18, 8, 10, 8, 2, 0}, 0, 6, []int{0, 2, 8, 8, 10, 18, 20}},
 	}
 	for _, test := range tests {
 		originalInputSlice := make([]int, len(test.inputSlice))
