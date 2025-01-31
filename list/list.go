@@ -24,7 +24,7 @@ func New(maxLength int) List {
 
 // Inserts x into position p.
 func (list *List) Insert(x, p int) error {
-	if list.Elements == nil {
+	if list.isListEmpty() {
 		return fmt.Errorf("nil list")
 	}
 
@@ -45,6 +45,55 @@ func (list *List) Insert(x, p int) error {
 	list.LastElPosition = len(list.Elements) - 1
 
 	return nil
+}
+
+// Returns the position of x
+// If multiple elements exist, it'll return the position of the first one.
+func (list *List) Locate(x int) (int, bool) {
+	for index, value := range list.Elements {
+		if value == x {
+			return index, true
+		}
+	}
+
+	return 0, false
+}
+
+// Returns the value at position p
+func (list *List) Retrieve(p int) (int, error) {
+	if list.isPositionNegative(p) {
+		return 0, fmt.Errorf("negative position")
+	}
+
+	if list.isPositionOutOfRange(p) {
+		return 0, fmt.Errorf("position is out of range")
+	}
+
+	return list.Elements[p], nil
+}
+
+// Deletes the value at position p
+func (list *List) Delete(p int) error {
+	if list.isPositionNegative(p) {
+		return fmt.Errorf("negative position")
+	}
+
+	if list.isPositionOutOfRange(p) {
+		return fmt.Errorf("position is out of range")
+	}
+
+	list.Elements = slices.Delete(list.Elements, p, p+1)
+
+	return nil
+}
+
+// returns the position following the last element
+func (list *List) End() int {
+	return len(list.Elements)
+}
+
+func (list *List) isListEmpty() bool {
+	return list.Elements == nil
 }
 
 func (list *List) isPositionNegative(p int) bool {

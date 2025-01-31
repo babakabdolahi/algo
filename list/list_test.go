@@ -151,3 +151,95 @@ func TestListInsert6(t *testing.T) {
 		t.Error("the purpose of the test is not met")
 	}
 }
+
+// locate elements
+func TestListLocate1(t *testing.T) {
+	list := New(2)
+
+	err := list.Insert(1, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = list.Insert(2, 1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	p1, ok := list.Locate(2)
+	if !ok || p1 != 1 {
+		t.Errorf("expected: %v\n got: %v", 1, p1)
+	}
+
+	p2, ok := list.Locate(5)
+	if ok {
+		t.Errorf("value %v should not exist", p2)
+	}
+}
+
+// return element
+func TestListRetrieve1(t *testing.T) {
+	list := New(2)
+
+	err := list.Insert(1, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = list.Insert(2, 1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	v, err := list.Retrieve(1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if v != 2 {
+		t.Errorf("expected: %v\n got: %v", 2, v)
+	}
+}
+
+// delete element
+func TestListDelete1(t *testing.T) {
+	list := New(3)
+
+	err := list.Insert(1, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = list.Insert(2, 1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = list.Insert(3, 2)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = list.Delete(1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if len(list.Elements) != 2 {
+		t.Errorf("expected list length: %v\n got: %v", 2, len(list.Elements))
+	}
+
+	v1, err := list.Retrieve(0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	v2, err := list.Retrieve(1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if v1 != 1 || v2 != 3 {
+		t.Errorf("delete operation done wrong")
+	}
+}
