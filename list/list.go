@@ -87,9 +87,19 @@ func (list *List) Delete(p int) error {
 	return nil
 }
 
-// returns the position following the last element
+// Returns the position following the last element
 func (list *List) End() int {
 	return len(list.Elements)
+}
+
+// Causes the list to become and empty one
+func (list *List) MakeEmpty() {
+	list.Elements = slices.Delete(list.Elements, 0, len(list.Elements))
+}
+
+// Prints elements to the default output
+func (list *List) PrintElements() {
+	fmt.Println(list)
 }
 
 func (list *List) isListEmpty() bool {

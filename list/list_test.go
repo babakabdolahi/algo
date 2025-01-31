@@ -243,3 +243,43 @@ func TestListDelete1(t *testing.T) {
 		t.Errorf("delete operation done wrong")
 	}
 }
+
+func TestEndMethod(t *testing.T) {
+	list := New(2)
+
+	err := list.Insert(1, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = list.Insert(2, 1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	endPosition := list.End()
+
+	if endPosition != 2 {
+		t.Errorf("expected end position: %v\n got: %v", 2, endPosition)
+	}
+}
+
+func TestMakeEmpty(t *testing.T) {
+	list := New(2)
+
+	err := list.Insert(1, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = list.Insert(2, 1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	list.MakeEmpty()
+
+	if len(list.Elements) != 0 {
+		t.Errorf("list is not emptied")
+	}
+}
