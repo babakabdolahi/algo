@@ -150,15 +150,18 @@ func TestParenthesesValidator(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+
 	if !isValid {
 		t.Errorf("wrong. Expected: %v, Got: %v", true, isValid)
 	}
 
 	s = "(()"
+
 	isValid, err = ParenthesesChecker(s)
 	if err != nil {
 		t.Error(err)
 	}
+
 	if isValid {
 		t.Errorf("wrong. Expected: %v, Got: %v", false, isValid)
 	}
