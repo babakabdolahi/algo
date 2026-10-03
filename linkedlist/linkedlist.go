@@ -1,12 +1,37 @@
 package linkedlist
 
-type SingleList struct {
-	Element *int
-	Next    *SingleList
+import "fmt"
+
+type Node struct {
+	Item int
+	Next *Node
 }
 
-// Insert, inserts a new element at position after p
-func Insert(x int, p *SingleList) error {
+func Init(v int) *Node {
+	return &Node{
+		Next: nil,
+		Item: v,
+	}
+}
 
-	return nil
+func Insert(prevNode *Node, v int) *Node {
+	newNode := Init(v)
+	newNode.Next = prevNode.Next
+	prevNode.Next = newNode
+
+	return newNode
+}
+
+func DeleteNode(prevNode *Node) {
+	if prevNode.Next == nil {
+		return
+	}
+
+	prevNode.Next = prevNode.Next.Next
+}
+
+func Traverse(head *Node) {
+	for t := head; t != nil; t = t.Next {
+		fmt.Println(t.Item)
+	}
 }
