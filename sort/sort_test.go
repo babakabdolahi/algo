@@ -30,6 +30,7 @@ func TestSelectionSort(t *testing.T) {
 		{[]int{1, 5, 100}, []int{1, 5, 100}},
 		{[]int{1, 1, 1}, []int{1, 1, 1}},
 		{[]int{2}, []int{2}},
+		{[]int{100, 7, 300, 4, 1000, 200}, []int{4, 7, 100, 200, 300, 1000}},
 	}
 	for _, test := range tests {
 		if got := SelectionSort(test.input); !sliceComparison(test.input, got) {

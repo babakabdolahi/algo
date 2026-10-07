@@ -17,11 +17,14 @@ func BubbleSort(s []int) []int {
 func SelectionSort(s []int) []int {
 	var lowestIndex int
 	for i := 0; i < len(s)-1; i++ {
+		lowestValue := s[i]
 		for j := i + 1; j < len(s); j++ {
-			if s[j] < s[i] {
+			if s[j] < lowestValue {
+				lowestValue = s[j]
 				lowestIndex = j
 			}
 		}
+
 		temp := s[i]
 		s[i] = s[lowestIndex]
 		s[lowestIndex] = temp
