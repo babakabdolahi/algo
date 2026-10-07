@@ -3,7 +3,7 @@ package sort
 import "testing"
 
 func TestBubbleSort(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		input []int
 		want  []int
 	}{
@@ -21,7 +21,7 @@ func TestBubbleSort(t *testing.T) {
 }
 
 func TestSelectionSort(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		input []int
 		want  []int
 	}{
@@ -39,7 +39,7 @@ func TestSelectionSort(t *testing.T) {
 }
 
 func TestInsertionSort(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		input []int
 		want  []int
 	}{
@@ -51,13 +51,31 @@ func TestInsertionSort(t *testing.T) {
 	}
 	for _, test := range tests {
 		if got := InsertionSort(test.input); !sliceComparison(test.input, got) {
-			t.Errorf("SelectionSort(%v) = %v, want %v", test.input, got, test.want)
+			t.Errorf("InsertionSort(%v) = %v, want %v", test.input, got, test.want)
+		}
+	}
+}
+
+func TestInverseInsertionSort(t *testing.T) {
+	tests := []struct {
+		input []int
+		want  []int
+	}{
+		{[]int{2, 1, 0}, []int{2, 1, 0}},
+		{[]int{2, 1}, []int{2, 2}},
+		{[]int{1, 5, 100}, []int{100, 5, 1}},
+		{[]int{1, 1, 1}, []int{1, 1, 1}},
+		{[]int{2}, []int{2}},
+	}
+	for _, test := range tests {
+		if got := InverseInsertionSort(test.input); !sliceComparison(test.input, got) {
+			t.Errorf("InverseInsertionSort(%v) = %v, want %v", test.input, got, test.want)
 		}
 	}
 }
 
 func TestPartition(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		inputSlice  []int
 		firstIndex  int
 		lastIndex   int
@@ -84,7 +102,7 @@ func TestPartition(t *testing.T) {
 }
 
 func TestQuickSort(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		inputSlice []int
 		firstIndex int
 		lastIndex  int
