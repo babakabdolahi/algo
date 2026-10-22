@@ -1,4 +1,4 @@
-// A simple package implementing different kinds of sort algorithms for integers.
+// Package sort is a simple package implementing different kinds of sort algorithms for integers.
 package sort
 
 func BubbleSort(s []int) []int {

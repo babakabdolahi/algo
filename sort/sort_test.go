@@ -3,7 +3,7 @@ package sort
 import "testing"
 
 func TestBubbleSort(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		input []int
 		want  []int
 	}{
@@ -21,7 +21,7 @@ func TestBubbleSort(t *testing.T) {
 }
 
 func TestSelectionSort(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		input []int
 		want  []int
 	}{
@@ -39,7 +39,7 @@ func TestSelectionSort(t *testing.T) {
 }
 
 func TestInsertionSort(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		input []int
 		want  []int
 	}{
@@ -48,6 +48,7 @@ func TestInsertionSort(t *testing.T) {
 		{[]int{1, 5, 100}, []int{1, 5, 100}},
 		{[]int{1, 1, 1}, []int{1, 1, 1}},
 		{[]int{2}, []int{2}},
+		{[]int{31, 41, 59, 26, 41, 58}, []int{26, 31, 41, 41, 58, 59}},
 	}
 	for _, test := range tests {
 		if got := InsertionSort(test.input); !sliceComparison(test.input, got) {
@@ -57,7 +58,7 @@ func TestInsertionSort(t *testing.T) {
 }
 
 func TestPartition(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		inputSlice  []int
 		firstIndex  int
 		lastIndex   int
@@ -84,7 +85,7 @@ func TestPartition(t *testing.T) {
 }
 
 func TestQuickSort(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		inputSlice []int
 		firstIndex int
 		lastIndex  int
