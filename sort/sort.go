@@ -17,11 +17,14 @@ func BubbleSort(s []int) []int {
 func SelectionSort(s []int) []int {
 	var lowestIndex int
 	for i := 0; i < len(s)-1; i++ {
+		lowestValue := s[i]
 		for j := i + 1; j < len(s); j++ {
-			if s[j] < s[i] {
+			if s[j] < lowestValue {
+				lowestValue = s[j]
 				lowestIndex = j
 			}
 		}
+
 		temp := s[i]
 		s[i] = s[lowestIndex]
 		s[lowestIndex] = temp
@@ -30,6 +33,10 @@ func SelectionSort(s []int) []int {
 }
 
 func InsertionSort(s []int) []int {
+	if len(s) == 1 || len(s) == 0 {
+		return s
+	}
+
 	for i := 1; i < len(s); i++ {
 		temp := s[i]
 		for j := i - 1; j >= 0; j-- {
@@ -37,6 +44,25 @@ func InsertionSort(s []int) []int {
 				s[j+1] = s[j]
 			} else {
 				s[j+1] = temp
+				break
+			}
+		}
+	}
+	return s
+}
+
+func InverseInsertionSort(s []int) []int {
+	if len(s) == 1 || len(s) == 0 {
+		return s
+	}
+
+	for i := len(s) - 2; i > 0; i-- {
+		temp := s[i]
+		for j := i + 1; j < len(s); j++ {
+			if s[j] > temp {
+				s[j-1] = s[j]
+			} else {
+				s[j-1] = temp
 				break
 			}
 		}

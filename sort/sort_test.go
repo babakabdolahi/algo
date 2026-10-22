@@ -30,6 +30,7 @@ func TestSelectionSort(t *testing.T) {
 		{[]int{1, 5, 100}, []int{1, 5, 100}},
 		{[]int{1, 1, 1}, []int{1, 1, 1}},
 		{[]int{2}, []int{2}},
+		{[]int{100, 7, 300, 4, 1000, 200}, []int{4, 7, 100, 200, 300, 1000}},
 	}
 	for _, test := range tests {
 		if got := SelectionSort(test.input); !sliceComparison(test.input, got) {
@@ -52,7 +53,25 @@ func TestInsertionSort(t *testing.T) {
 	}
 	for _, test := range tests {
 		if got := InsertionSort(test.input); !sliceComparison(test.input, got) {
-			t.Errorf("SelectionSort(%v) = %v, want %v", test.input, got, test.want)
+			t.Errorf("InsertionSort(%v) = %v, want %v", test.input, got, test.want)
+		}
+	}
+}
+
+func TestInverseInsertionSort(t *testing.T) {
+	tests := []struct {
+		input []int
+		want  []int
+	}{
+		{[]int{2, 1, 0}, []int{2, 1, 0}},
+		{[]int{2, 1}, []int{2, 2}},
+		{[]int{1, 5, 100}, []int{100, 5, 1}},
+		{[]int{1, 1, 1}, []int{1, 1, 1}},
+		{[]int{2}, []int{2}},
+	}
+	for _, test := range tests {
+		if got := InverseInsertionSort(test.input); !sliceComparison(test.input, got) {
+			t.Errorf("InverseInsertionSort(%v) = %v, want %v", test.input, got, test.want)
 		}
 	}
 }
